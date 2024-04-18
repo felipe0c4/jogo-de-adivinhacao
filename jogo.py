@@ -1,4 +1,4 @@
- import random
+import random
 from peewee import *
 
 db = SqliteDatabase('pontos.db')
