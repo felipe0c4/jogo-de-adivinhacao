@@ -8,14 +8,10 @@ class Pontos(Model):
     pontuacao = CharField(default="0")
 
     class Meta:
-        database = db # This model uses the "people.db" database.
+        database = db
 
 db.connect()
 db.create_tables([Pontos])
-
-
-
-
 
 palavras = ["banana", "carro", "casa", "computador", "amor", "feliz", "sol", "lua", "gato", "cachorro",
             "futebol", "livro", "janela", "porta", "chave", "telefone", "aventura", "montanha", "praia", "oceano",
@@ -33,13 +29,10 @@ vida = 10
 pontos = 0
 letras = []
 
-
 for pontuacao in Pontos.select():
     print(f'Nome: {pontuacao.name}, pontuação: {pontuacao.pontuacao}')
 
-
 nome = input("Qual seu Nome: ")
-
 
 palavra_escolhida = random.choice(palavras)
 
@@ -53,8 +46,8 @@ while True:
         palpite = input("\nFaça sua Escolha: ")
         if palpite == palavra_escolhida:
             print("Parabens voce acertou a palavra [", palavra_escolhida, "]")
-            print("Sua pontuação final foi de: ",pontos)
             pontos += 15
+            print("Sua pontuação final foi de: ",pontos)
             try:
                 jogador = Pontos.get(name=nome)
                 jogador.pontuacao = pontos
